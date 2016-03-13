@@ -6,13 +6,13 @@
 //  Copyright © 2016 Mark Tezza. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MTSettingsViewController.h"
 
-@interface ViewController ()
+@interface MTSettingsViewController ()
 
 @end
 
-@implementation ViewController
+@implementation MTSettingsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
