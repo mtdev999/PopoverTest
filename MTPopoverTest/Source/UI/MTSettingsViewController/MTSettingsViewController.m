@@ -10,11 +10,13 @@
 
 #import "MTDetailsViewController.h"
 #import "MTDatePickerViewController.h"
+#import "MTEducationViewController.h"
 
-@interface MTSettingsViewController () <UITextFieldDelegate, MTDatePickerViewControllerDelegate>
+@interface MTSettingsViewController () <UITextFieldDelegate, MTDatePickerViewControllerDelegate,
+                                                             MTEducationViewControllerDelegate>
 
 @property (nonatomic, strong)   UITextField     *textField;
-@property (strong, nonatomic) NSDate *birthday;
+@property (nonatomic, strong)   NSDate          *birthday;
 
 @end
 
@@ -72,6 +74,21 @@
     popController.sourceRect = CGRectMake(30, 50, 10, 10);
 }
 
+- (void)showEducationPopoverController {
+    MTEducationViewController *evc = [self.storyboard instantiateViewControllerWithIdentifier:@"MTEducationViewController"];
+    evc.delegate = self;
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:evc];
+    navController.modalPresentationStyle = UIModalPresentationPopover;
+    [self presentViewController:navController animated:YES completion:nil];
+    
+    UIPopoverPresentationController *popController = [navController popoverPresentationController];
+    popController.permittedArrowDirections = UIPopoverArrowDirectionRight;
+
+    popController.sourceView = self.educationField;
+    popController.sourceRect = CGRectMake(30, 50, 10, 10);
+}
+
 #pragma mark -
 #pragma mark UITextFieldDelegate
 
@@ -88,6 +105,11 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if ([textField isEqual:self.birthdayField]) {
         [self showDatePickerPopoverController];
+        
+        return NO;
+    } else if ([textField isEqual:self.educationField]) {
+        [self showEducationPopoverController];
+        
         return NO;
     }
     
@@ -108,5 +130,14 @@
     [self.tableView reloadData];
 }
 
+#pragma mark -
+#pragma mark MTEducationViewControllerDelegate
+
+- (void)didFinishEditingEducation:(NSString*)education withIndexPath:(NSIndexPath *)indexPath {
+    self.educationField.text = education;
+    self.educationIndexPath = indexPath;
+    
+    [self.tableView reloadData];
+}
 
 @end

@@ -14,6 +14,9 @@
 
 @implementation MTDetailsViewController
 
+#pragma mark -
+#pragma mark Life Cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Info";
@@ -27,11 +30,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
-- (void)dealloc {
-    NSLog(@"Details dealocated");
-}
-
 #pragma mark -
 #pragma mark Actions
 

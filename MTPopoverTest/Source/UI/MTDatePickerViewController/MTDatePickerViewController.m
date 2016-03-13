@@ -14,6 +14,9 @@
 
 @implementation MTDatePickerViewController
 
+#pragma mark -
+#pragma mark Life Cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Setting Date";
@@ -28,10 +31,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc {
-    NSLog(@"date picker dealocated");
-}
-
 #pragma mark -
 #pragma mark Actions
 
@@ -39,10 +38,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 - (IBAction)actionDateDidChange:(UIDatePicker *)sender {
    [self.delegate didFinishEditingDate:sender.date];
     self.birthdayDate = sender.date;
-    
 }
+
 @end
