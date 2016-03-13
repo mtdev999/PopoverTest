@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B5CB69A1C95718500AC5795 /* MTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CB6991C95718500AC5795 /* MTDetailsViewController.m */; };
+		1B5CB69D1C9580BE00AC5795 /* MTDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CB69C1C9580BE00AC5795 /* MTDatePickerViewController.m */; };
 		1B880A581C9500E50011DFD1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B880A571C9500E50011DFD1 /* main.m */; };
 		1B880A5B1C9500E50011DFD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B880A5A1C9500E50011DFD1 /* AppDelegate.m */; };
 		1B880A751C9501EC0011DFD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B880A6E1C9501EC0011DFD1 /* Assets.xcassets */; };
@@ -19,6 +20,8 @@
 /* Begin PBXFileReference section */
 		1B5CB6981C95718500AC5795 /* MTDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDetailsViewController.h; sourceTree = "<group>"; };
 		1B5CB6991C95718500AC5795 /* MTDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDetailsViewController.m; sourceTree = "<group>"; };
+		1B5CB69B1C9580BE00AC5795 /* MTDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDatePickerViewController.h; sourceTree = "<group>"; };
+		1B5CB69C1C9580BE00AC5795 /* MTDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDatePickerViewController.m; sourceTree = "<group>"; };
 		1B880A531C9500E50011DFD1 /* MTPopoverTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTPopoverTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B880A571C9500E50011DFD1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1B880A591C9500E50011DFD1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -101,8 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				1B880A781C95027A0011DFD1 /* MTDatePickerViewController */,
-				1B880A791C95027A0011DFD1 /* MTDetailsViewController */,
 				1B880A7A1C95027A0011DFD1 /* MTEducationsViewController */,
+				1B880A791C95027A0011DFD1 /* MTDetailsViewController */,
 				1B880A7B1C95027A0011DFD1 /* MTSettingsViewController */,
 			);
 			path = UI;
@@ -111,6 +114,8 @@
 		1B880A781C95027A0011DFD1 /* MTDatePickerViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1B5CB69B1C9580BE00AC5795 /* MTDatePickerViewController.h */,
+				1B5CB69C1C9580BE00AC5795 /* MTDatePickerViewController.m */,
 			);
 			path = MTDatePickerViewController;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B5CB69D1C9580BE00AC5795 /* MTDatePickerViewController.m in Sources */,
 				1B880A5B1C9500E50011DFD1 /* AppDelegate.m in Sources */,
 				1B880A581C9500E50011DFD1 /* main.m in Sources */,
 				1B5CB69A1C95718500AC5795 /* MTDetailsViewController.m in Sources */,

@@ -9,8 +9,12 @@
 #import "MTSettingsViewController.h"
 
 #import "MTDetailsViewController.h"
+#import "MTDatePickerViewController.h"
 
-@interface MTSettingsViewController () <UITextFieldDelegate>
+@interface MTSettingsViewController () <UITextFieldDelegate, MTDatePickerViewControllerDelegate>
+
+@property (nonatomic, strong)   UITextField     *textField;
+@property (strong, nonatomic) NSDate *birthday;
 
 @end
 
@@ -18,23 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    
-    [nc addObserver:self
-           selector:@selector(notificationTextDidBeginEditing:)
-               name:UITextFieldTextDidBeginEditingNotification
-             object:nil];
-    
-    [nc addObserver:self
-           selector:@selector(notificationTextDidEndEditing:)
-               name:UITextFieldTextDidEndEditingNotification
-             object:nil];
-    
-    [nc addObserver:self
-           selector:@selector(notificationTextDidChangeEditing:)
-               name:UITextFieldTextDidChangeNotification
-             object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,16 +29,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 #pragma mark -
 #pragma mark Actions
 
 - (IBAction)actionInfo:(UIBarButtonItem *)sender {
-    NSLog(@"action Info");
+    [self showInfoPopoverControllerFromSender:sender];
     
+}
+
+- (IBAction)actionDidChangeText:(UITextField *)sender {
+    NSLog(@"text field %@", sender.text);
+}
+
+- (void)showInfoPopoverControllerFromSender:(id)sender {
     MTDetailsViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"MTDetailsViewController"];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:dvc];
     
@@ -60,7 +50,6 @@
     
     UIPopoverPresentationController *popController = [navController popoverPresentationController];
     popController.permittedArrowDirections = UIPopoverArrowDirectionAny;
-    popController.delegate = dvc.delegate;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
@@ -68,9 +57,19 @@
     }
 }
 
-- (IBAction)actionDidChangeText:(UITextField *)sender {
+- (void)showDatePickerPopoverController {
+    MTDatePickerViewController *dateViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MTDatePickerViewController"];
+    dateViewController.delegate = self;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:dateViewController];
     
-    NSLog(@"text field %@", sender.text);
+    navController.modalPresentationStyle = UIModalPresentationPopover;
+    [self presentViewController:navController animated:YES completion:nil];
+    
+    UIPopoverPresentationController *popController = [navController popoverPresentationController];
+    popController.permittedArrowDirections = UIPopoverArrowDirectionRight;
+    
+    popController.sourceView = self.birthdayField;
+    popController.sourceRect = CGRectMake(30, 50, 10, 10);
 }
 
 #pragma mark -
@@ -86,19 +85,28 @@
     return YES;
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if ([textField isEqual:self.birthdayField]) {
+        [self showDatePickerPopoverController];
+        return NO;
+    }
+    
+    return YES;
+}
+
 #pragma mark -
-#pragma mark Notifications
+#pragma mark  MTDatePickerViewControllerDelegate
 
-- (void)notificationTextDidBeginEditing:(NSNotification *)notification {
-    NSLog(@"notification - TextDidBeginEditing");
+- (void)didFinishEditingDate:(NSDate *)date {
+    self.birthday = date;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd.MM.yyyy"];
+    
+    self.birthdayField.text = [dateFormatter stringFromDate:date];
+    
+    [self.tableView reloadData];
 }
 
-- (void)notificationTextDidEndEditing:(NSNotification *)notification {
-    NSLog(@"notification - TextDidEndEditing");
-}
-
-- (void)notificationTextDidChangeEditing:(NSNotification *)notification {
-    NSLog(@"notification - TextDidChangeEditing");
-}
 
 @end

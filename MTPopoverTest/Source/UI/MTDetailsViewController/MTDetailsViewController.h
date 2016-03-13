@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MTDetailsViewController : UIViewController
-@property (nonatomic, strong) id<UIPopoverPresentationControllerDelegate> delegate;
 
 @end
