@@ -25,7 +25,7 @@
         <!--Settings-->
         <scene sceneID="Xom-sW-IHt">
             <objects>
-                <viewController id="rOc-92-A8f" customClass="MTSettingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MTDetailsViewController" id="rOc-92-A8f" customClass="MTDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nXZ-Xb-ieI"/>
                         <viewControllerLayoutGuide type="bottom" id="iYI-gW-ecC"/>
@@ -33,13 +33,28 @@
                     <view key="view" contentMode="scaleToFill" id="SGa-Lo-YYn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lesson #36 Popover Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfu-s1-zLN">
+                                <rect key="frame" x="152" y="278" width="296" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="SY5-Bh-T9b"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.42745098040000001" green="0.63137254899999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Zfu-s1-zLN" firstAttribute="centerX" secondItem="SGa-Lo-YYn" secondAttribute="centerX" constant="1" id="4Gl-LD-b6h"/>
+                            <constraint firstItem="Zfu-s1-zLN" firstAttribute="centerY" secondItem="SGa-Lo-YYn" secondAttribute="centerY" constant="1" id="qo7-dx-f42"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="vlt-ej-9Qi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRe-qz-O4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1517" y="398"/>
+            <point key="canvasLocation" x="1515" y="433"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Lgb-hc-RD9">
@@ -59,13 +74,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9KX-M7-Epv">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9KX-M7-Epv">
                                                     <rect key="frame" x="392" y="25" width="200" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="g8R-cH-4Xs"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next"/>
+                                                    <connections>
+                                                        <action selector="actionDidChangeText:" destination="tlK-XV-wRL" eventType="editingChanged" id="12g-ux-AZX"/>
+                                                        <outlet property="delegate" destination="tlK-XV-wRL" id="0Mx-gh-uo5"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF4-yY-nNn">
                                                     <rect key="frame" x="8" y="29" width="75" height="21"/>
@@ -101,13 +120,17 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter surname" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0tj-Mg-9xg">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter surname" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0tj-Mg-9xg">
                                                     <rect key="frame" x="392" y="25" width="200" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="OzA-q7-v0b"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done"/>
+                                                    <connections>
+                                                        <action selector="actionDidChangeText:" destination="tlK-XV-wRL" eventType="editingChanged" id="akx-dc-als"/>
+                                                        <outlet property="delegate" destination="tlK-XV-wRL" id="KLG-y3-dib"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -175,6 +198,10 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="actionDidChangeText:" destination="tlK-XV-wRL" eventType="editingChanged" id="LNu-0l-14B"/>
+                                                        <outlet property="delegate" destination="tlK-XV-wRL" id="zu3-lx-NQo"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -209,6 +236,10 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="actionDidChangeText:" destination="tlK-XV-wRL" eventType="editingChanged" id="9se-DG-3Ey"/>
+                                                        <outlet property="delegate" destination="tlK-XV-wRL" id="2oz-jw-TIU"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -228,7 +259,19 @@
                             <outlet property="delegate" destination="tlK-XV-wRL" id="gin-LQ-U6f"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Qur-0c-K8W"/>
+                    <navigationItem key="navigationItem" id="Qur-0c-K8W">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="M0m-1z-bur">
+                            <connections>
+                                <action selector="actionInfo:" destination="tlK-XV-wRL" id="uIn-DA-mNq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="birthdayField" destination="sUj-d8-MOs" id="Vwl-I0-isW"/>
+                        <outlet property="educationField" destination="kBo-U9-5qY" id="ABu-FS-ojS"/>
+                        <outlet property="nameField" destination="9KX-M7-Epv" id="c0N-ZS-qru"/>
+                        <outlet property="surnameField" destination="0tj-Mg-9xg" id="jho-Q2-vNQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W8S-em-9J9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

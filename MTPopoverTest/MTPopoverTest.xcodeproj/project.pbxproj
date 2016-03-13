@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B5CB69A1C95718500AC5795 /* MTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CB6991C95718500AC5795 /* MTDetailsViewController.m */; };
 		1B880A581C9500E50011DFD1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B880A571C9500E50011DFD1 /* main.m */; };
 		1B880A5B1C9500E50011DFD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B880A5A1C9500E50011DFD1 /* AppDelegate.m */; };
 		1B880A751C9501EC0011DFD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B880A6E1C9501EC0011DFD1 /* Assets.xcassets */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B5CB6981C95718500AC5795 /* MTDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDetailsViewController.h; sourceTree = "<group>"; };
+		1B5CB6991C95718500AC5795 /* MTDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDetailsViewController.m; sourceTree = "<group>"; };
 		1B880A531C9500E50011DFD1 /* MTPopoverTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTPopoverTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B880A571C9500E50011DFD1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1B880A591C9500E50011DFD1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 		1B880A791C95027A0011DFD1 /* MTDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1B5CB6981C95718500AC5795 /* MTDetailsViewController.h */,
+				1B5CB6991C95718500AC5795 /* MTDetailsViewController.m */,
 			);
 			path = MTDetailsViewController;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 			files = (
 				1B880A5B1C9500E50011DFD1 /* AppDelegate.m in Sources */,
 				1B880A581C9500E50011DFD1 /* main.m in Sources */,
+				1B5CB69A1C95718500AC5795 /* MTDetailsViewController.m in Sources */,
 				1B880A7E1C9502FB0011DFD1 /* MTSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +364,7 @@
 				1B880A6C1C9500E50011DFD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

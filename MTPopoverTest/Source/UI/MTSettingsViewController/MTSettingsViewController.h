@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface MTSettingsViewController : UITableViewController
+@property (strong, nonatomic) IBOutlet UITextField *nameField;
+@property (strong, nonatomic) IBOutlet UITextField *surnameField;
+@property (strong, nonatomic) IBOutlet UITextField *birthdayField;
+@property (strong, nonatomic) IBOutlet UITextField *educationField;
 
+- (IBAction)actionInfo:(UIBarButtonItem *)sender;
+- (IBAction)actionDidChangeText:(UITextField *)sender;
 
 @end
 
