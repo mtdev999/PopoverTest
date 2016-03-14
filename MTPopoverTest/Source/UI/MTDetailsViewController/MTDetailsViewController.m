@@ -26,6 +26,7 @@
                                                                               action:@selector(actionCancel:)];
     self.navigationItem.rightBarButtonItem = backItem;
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -39,13 +40,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
 #pragma mark -
 #pragma mark Actions
 
 - (void)actionCancel:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
 
 @end

@@ -52,8 +52,7 @@
 #pragma mark -
 #pragma mark UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (self.choisedIndexPath)
@@ -64,17 +63,21 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
     
-    if (indexPath.row == MTEducationTypePrimary)
-    {
-        self.educationString = @"Primary education";
-    }
-    else if (indexPath.row == MTEducationTypeSecondary)
-    {
-        self.educationString = @"Secondary education";
-    }
-    else if (indexPath.row == MTEducationTypeHigher)
-    {
-        self.educationString = @"Higher education";
+    switch (indexPath.row) {
+        case MTEducationTypePrimary:
+            self.educationString = @"Primary education";
+            break;
+            
+        case MTEducationTypeSecondary:
+            self.educationString = @"Secondary education";
+            break;
+            
+        case MTEducationTypeHigher:
+            self.educationString = @"Higher education";
+            break;
+            
+        default:
+            break;
     }
     
     self.choisedIndexPath = indexPath;

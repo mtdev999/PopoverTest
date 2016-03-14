@@ -48,14 +48,11 @@
 - (IBAction)actionRefreshButton:(UIBarButtonItem *)sender {
     self.nameField.text = @"";
     self.surnameField.text = @"";
-
     self.birthdayField.text = @"";
     self.educationField.text = @"";
     
     [self.tableView reloadData];
 }
-
-
 
 - (void)showInfoPopoverControllerFromSender:(id)sender {
     MTDetailsViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"MTDetailsViewController"];
@@ -72,7 +69,6 @@
     {
         popController.barButtonItem = sender;
     }
-    
 }
 
 - (void)showDatePickerPopoverController {
@@ -137,10 +133,8 @@
 
 - (void)didFinishEditingDate:(NSDate *)date {
     self.birthday = date;
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MMMM dd, yyyy"];
-    
     self.birthdayField.text = [dateFormatter stringFromDate:date];
     
     [self.tableView reloadData];

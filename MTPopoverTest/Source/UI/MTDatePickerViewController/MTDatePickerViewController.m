@@ -8,10 +8,6 @@
 
 #import "MTDatePickerViewController.h"
 
-@interface MTDatePickerViewController ()
-
-@end
-
 @implementation MTDatePickerViewController
 
 #pragma mark -
