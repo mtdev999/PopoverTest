@@ -39,12 +39,22 @@
 
 - (IBAction)actionInfo:(UIBarButtonItem *)sender {
     [self showInfoPopoverControllerFromSender:sender];
-    
 }
 
 - (IBAction)actionDidChangeText:(UITextField *)sender {
     NSLog(@"text field %@", self.nameField.text);
 }
+
+- (IBAction)actionRefreshButton:(UIBarButtonItem *)sender {
+    self.nameField.text = @"";
+    self.surnameField.text = @"";
+
+    self.birthdayField.text = @"";
+    self.educationField.text = @"";
+    
+    [self.tableView reloadData];
+}
+
 
 
 - (void)showInfoPopoverControllerFromSender:(id)sender {
@@ -134,6 +144,10 @@
     self.birthdayField.text = [dateFormatter stringFromDate:date];
     
     [self.tableView reloadData];
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    return YES;
 }
 
 #pragma mark -

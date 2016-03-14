@@ -19,6 +19,7 @@
 
 - (IBAction)actionInfo:(UIBarButtonItem *)sender;
 - (IBAction)actionDidChangeText:(UITextField *)sender;
+- (IBAction)actionRefreshButton:(UIBarButtonItem *)sender;
 
 @end
 

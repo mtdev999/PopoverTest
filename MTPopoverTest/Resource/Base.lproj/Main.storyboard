@@ -332,6 +332,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Qur-0c-K8W">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="2kI-gw-Y6E">
+                            <connections>
+                                <action selector="actionRefreshButton:" destination="tlK-XV-wRL" id="up5-P9-aaD"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="action" id="M0m-1z-bur">
                             <connections>
                                 <action selector="actionInfo:" destination="tlK-XV-wRL" id="uIn-DA-mNq"/>
