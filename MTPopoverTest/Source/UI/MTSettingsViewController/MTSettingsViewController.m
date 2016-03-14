@@ -13,7 +13,8 @@
 #import "MTEducationViewController.h"
 
 @interface MTSettingsViewController () <UITextFieldDelegate, MTDatePickerViewControllerDelegate,
-                                                             MTEducationViewControllerDelegate>
+                                                             MTEducationViewControllerDelegate,
+                                                             MTDetailsViewControllerDelegate>
 
 @property (nonatomic, strong)   UITextField     *textField;
 @property (nonatomic, strong)   NSDate          *birthday;
@@ -21,9 +22,11 @@
 @end
 
 @implementation MTSettingsViewController
+@dynamic educationType;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"Popover Test";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,11 +43,13 @@
 }
 
 - (IBAction)actionDidChangeText:(UITextField *)sender {
-    NSLog(@"text field %@", sender.text);
+    NSLog(@"text field %@", self.nameField.text);
 }
+
 
 - (void)showInfoPopoverControllerFromSender:(id)sender {
     MTDetailsViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"MTDetailsViewController"];
+    dvc.delegate = self;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:dvc];
     
     navController.modalPresentationStyle = UIModalPresentationPopover;
@@ -57,6 +62,7 @@
     {
         popController.barButtonItem = sender;
     }
+    
 }
 
 - (void)showDatePickerPopoverController {
@@ -123,7 +129,7 @@
     self.birthday = date;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd.MM.yyyy"];
+    [dateFormatter setDateFormat:@"MMMM dd, yyyy"];
     
     self.birthdayField.text = [dateFormatter stringFromDate:date];
     
@@ -138,6 +144,29 @@
     self.educationIndexPath = indexPath;
     
     [self.tableView reloadData];
+}
+
+#pragma mark -
+#pragma mark MTDetailsViewControllerDelegate
+
+- (void)didFinishChangeInfo:(UILabel *)name
+                    surname:(UILabel *)surname
+                     gender:(UILabel *)gender
+                   birthday:(UILabel *)date
+                  education:(UILabel *)education
+{
+    NSString *genderStr = @"";
+    if (self.surnameField.text.length > 0) {
+        genderStr = (self.genderControl.selectedSegmentIndex == 0 ? @"Male":@"Female");
+    } else {
+        genderStr = @"";
+    }
+    
+    name.text = [NSString stringWithFormat:@"%@ %@", name.text, self.nameField.text];
+    surname.text = [NSString stringWithFormat:@"%@ %@", surname.text, self.surnameField.text];
+    gender.text = [NSString stringWithFormat:@"%@ %@", gender.text, genderStr];
+    date.text = [NSString stringWithFormat:@"%@ %@", date.text, self.birthdayField.text];
+    education.text = [NSString stringWithFormat:@"%@ %@", education.text, self.educationField.text];
 }
 
 @end

@@ -22,8 +22,8 @@
     self.navigationItem.title = @"Setting Date";
     
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                target:self
-                                                                                action:@selector(actionCancel:)];
+                                                                              target:self
+                                                                              action:@selector(actionCancel:)];
     self.navigationItem.rightBarButtonItem = doneItem;
 }
 

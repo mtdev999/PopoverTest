@@ -26,6 +26,15 @@
                                                                               action:@selector(actionCancel:)];
     self.navigationItem.rightBarButtonItem = backItem;
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.delegate didFinishChangeInfo:self.nameL
+                               surname:self.surnameL
+                                gender:self.genderL
+                              birthday:self.birthdayDateL
+                             education:self.educationL];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -36,5 +45,7 @@
 - (void)actionCancel:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 
 @end
